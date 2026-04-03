@@ -31,3 +31,4 @@ C:\Users\Student\Documents\GitHub\Purva-igra\Purva-igra\obj\Debug\net9.0\refint\
 C:\Users\Student\Documents\GitHub\Purva-igra\Purva-igra\obj\Debug\net9.0\Purva-igra.pdb
 C:\Users\Student\Documents\GitHub\Purva-igra\Purva-igra\obj\Debug\net9.0\Purva-igra.genruntimeconfig.cache
 C:\Users\Student\Documents\GitHub\Purva-igra\Purva-igra\obj\Debug\net9.0\ref\Purva-igra.dll
+C:\Users\Student\Documents\GitHub\Purva-igra\Purva-igra\obj\Debug\net9.0\Purva-igra.sourcelink.json
