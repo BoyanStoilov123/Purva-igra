@@ -23,16 +23,15 @@ namespace Purva_igra
 
             _graphics.PreferredBackBufferWidth = 1280;
             _graphics.PreferredBackBufferHeight = 800;
-
-            _player = new Player();
-                new Vector2(100, 100),
-                new Vector2(40, 65)
-            );
         }
 
         protected override void Initialize()
-        {
-            _playerSize = new Vector2(40, 65);
+        { 
+            _player = new Player(
+                new Vector2 (100, 100),
+                new Vector2 (40, 65)
+            );
+          
             _ground = 400;
 
             base.Initialize();
@@ -79,10 +78,10 @@ namespace Purva_igra
             _spriteBatch.Draw(
                 _squareTexture,
                 new Rectangle(
-                    (int)_playerPosition.X,
-                    (int)_playerPosition.Y,
-                    (int)_playerSize.X,
-                    (int)_playerSize.Y),
+                    (int)_player.Position.X,
+                    (int)_player.Position.Y,
+                    (int)_player.Size.X,
+                    (int)_player.Size.Y),
                 Color.Beige);
 
             _spriteBatch.Draw(
