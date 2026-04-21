@@ -51,19 +51,32 @@ namespace Purva_igra
                 || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            Vector2 direction = new Vector2();
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
-                _playerPosition.X--;
+                direction.X = -1;
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.D))
             {
-                _playerPosition.X++;
+                direction.X = 1;
             }
 
-            if ((_playerPosition.Y) < (_ground - _playerSize.Y))
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
             {
-                _playerPosition.Y++;
+               
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.S))
+            {
+                direction.Y = 1;
+            }
+
+            _player.Move(direction);
+
+            if ((_player.Position.Y) < (_ground - _player.Size.Y))
+            {
+                _player.Position.Y++;
             }
 
             base.Update(gameTime);
