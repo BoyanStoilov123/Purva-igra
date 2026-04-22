@@ -9,9 +9,8 @@ namespace Purva_igra
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Texture2D _squareTexture;
-        private Vector2 _playerPosition;
-        private Vector2 _playerSize;
         private float _ground;
+        private float _jumpTimer; 
 
         private Player _player;
 
@@ -26,13 +25,15 @@ namespace Purva_igra
         }
 
         protected override void Initialize()
-        { 
+        {
+            _jumpTimer = 0;
+            _ground = 400;
+
             _player = new Player(
-                new Vector2 (100, 100),
+                new Vector2 (50, 335),
                 new Vector2 (40, 65)
             );
           
-            _ground = 400;
 
             base.Initialize();
         }
@@ -47,6 +48,8 @@ namespace Purva_igra
 
         protected override void Update(GameTime gameTime)
         {
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed
                 || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
@@ -62,17 +65,17 @@ namespace Purva_igra
                 direction.X = 1;
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            if (Keyboard.GetState().IsKeyDown(Keys.Space)
+                && (_jumpTimer <= 0))
             {
-               
+                direction.Y = -200;
+                _jumpTimer = 1;
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.S))
-            {
-                direction.Y = 1;
-            }
-
-            _player.Move(direction);
+            if (_jumpTimer >= 0)
+                _jumpTimer -= deltaTime;
+            
+            _player.Move(direction, deltaTime);
 
             if ((_player.Position.Y) < (_ground - _player.Size.Y))
             {
