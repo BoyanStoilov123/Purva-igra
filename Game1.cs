@@ -10,7 +10,9 @@ namespace Purva_igra
         private SpriteBatch _spriteBatch;
         private Texture2D _squareTexture;
         private float _ground;
-        private float _jumpTimer; 
+        private float _jumpTimer;
+
+        private Texture2D _backround;
 
         private Player _player;
 
@@ -41,6 +43,8 @@ namespace Purva_igra
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            _backround = Content.Load<Texture2D>("images/backround");
 
             _squareTexture = new Texture2D(GraphicsDevice, 1, 1);
             _squareTexture.SetData(new[] { Color.Beige });
@@ -92,6 +96,9 @@ namespace Purva_igra
             _spriteBatch.Begin();
 
             _spriteBatch.Draw(
+               _backround, Vector2.Zero, Color.White);
+
+            _spriteBatch.Draw(
                 _squareTexture,
                 new Rectangle(
                     (int)_player.Position.X,
@@ -105,7 +112,6 @@ namespace Purva_igra
                 new Rectangle(0, (int)_ground, 100,  100 ),
                 Color.DarkRed
             );
-
 
             _spriteBatch.End();
 
