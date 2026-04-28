@@ -11,6 +11,7 @@ namespace Purva_igra
         private Texture2D _squareTexture;
         private float _ground;
         private float _jumpTimer;
+        private Vector2 _screenSize;
 
         private Texture2D _backround;
 
@@ -22,14 +23,15 @@ namespace Purva_igra
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            _graphics.PreferredBackBufferWidth = 1280;
-            _graphics.PreferredBackBufferHeight = 800;
+            _screenSize = new Vector2(1280, 720);
+            _graphics.PreferredBackBufferWidth = (int)_screenSize.X;
+            _graphics.PreferredBackBufferHeight = (int)_screenSize.Y;
         }
 
         protected override void Initialize()
         {
             _jumpTimer = 0;
-            _ground = 400;
+            _ground = 690;
 
             _player = new Player(
                 new Vector2 (50, 335),
@@ -106,12 +108,6 @@ namespace Purva_igra
                     (int)_player.Size.X,
                     (int)_player.Size.Y),
                 Color.Beige);
-
-            _spriteBatch.Draw(
-                _squareTexture,
-                new Rectangle(0, (int)_ground, 100,  100 ),
-                Color.DarkRed
-            );
 
             _spriteBatch.End();
 

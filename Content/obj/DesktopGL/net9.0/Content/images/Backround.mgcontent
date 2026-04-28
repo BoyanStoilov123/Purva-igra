@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Student/Desktop/Purva-igra/Content/images/Gemini_Generated_Image_sjomspsjomspsjom.png</SourceFile>
-  <SourceTime>2026-04-24T10:20:23.3668165+03:00</SourceTime>
-  <DestFile>C:/Users/Student/Desktop/Purva-igra/Content/bin/DesktopGL/Content/images/Backround.xnb</DestFile>
-  <DestTime>2026-04-24T10:58:19.4646607+03:00</DestTime>
+  <SourceFile>C:/Users/Student/Documents/GitHub/Purva-igra/Content/images/Gemini_Generated_Image_sjomspsjomspsjom.png</SourceFile>
+  <SourceTime>2026-04-28T10:51:09.7794957+03:00</SourceTime>
+  <DestFile>C:/Users/Student/Documents/GitHub/Purva-igra/Content/bin/DesktopGL/Content/images/Backround.xnb</DestFile>
+  <DestTime>2026-04-28T10:51:37.5871784+03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2025-10-20T17:25:32+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

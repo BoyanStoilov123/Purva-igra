@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Student\\Desktop\\Purva-igra\\Purva-igra.csproj": {}
+    "C:\\Users\\Student\\Documents\\GitHub\\Purva-igra\\Purva-igra.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Student\\Desktop\\Purva-igra\\Purva-igra.csproj": {
+    "C:\\Users\\Student\\Documents\\GitHub\\Purva-igra\\Purva-igra.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Student\\Desktop\\Purva-igra\\Purva-igra.csproj",
+        "projectUniqueName": "C:\\Users\\Student\\Documents\\GitHub\\Purva-igra\\Purva-igra.csproj",
         "projectName": "Purva-igra",
-        "projectPath": "C:\\Users\\Student\\Desktop\\Purva-igra\\Purva-igra.csproj",
+        "projectPath": "C:\\Users\\Student\\Documents\\GitHub\\Purva-igra\\Purva-igra.csproj",
         "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Student\\Desktop\\Purva-igra\\obj\\",
+        "outputPath": "C:\\Users\\Student\\Documents\\GitHub\\Purva-igra\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
