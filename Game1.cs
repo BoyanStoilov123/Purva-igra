@@ -55,23 +55,25 @@ namespace Purva_igra
         protected override void Update(GameTime gameTime)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            GamePadState gamePad = GamePad.GetState(PlayerIndex.One);
+            KeyboardState keyboard = Keyboard.GetState();
 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed
-                || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (gamePad.Buttons.Back == ButtonState.Pressed
+                || keyboard.IsKeyDown(Keys.Escape))
                 Exit();
 
             Vector2 direction = new Vector2();
-            if (Keyboard.GetState().IsKeyDown(Keys.A))
+            if (keyboard.IsKeyDown(Keys.A))
             {
                 direction.X = -1;
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.D))
+            if (keyboard.IsKeyDown(Keys.D))
             {
                 direction.X = 1;
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Space)
+            if (keyboard.IsKeyDown(Keys.Space)
                 && (_jumpTimer <= 0))
             {
                 direction.Y = -200;
@@ -81,12 +83,9 @@ namespace Purva_igra
             if (_jumpTimer >= 0)
                 _jumpTimer -= deltaTime;
             
-            _player.Move(direction, deltaTime);
-
-            if ((_player.Position.Y) < (_ground - _player.Size.Y))
-            {
-                _player.Position.Y++;
-            }
+            _player.Update(deltaTime);
+            _player.SetDirection(direction);
+            
 
             base.Update(gameTime);
         }
