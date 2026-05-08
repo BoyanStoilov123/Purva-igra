@@ -73,19 +73,19 @@ namespace Purva_igra
                 direction.X = 1;
             }
 
-            if (keyboard.IsKeyDown(Keys.Space)
-                && (_jumpTimer <= 0))
+            if (keyboard.IsKeyDown(Keys.Space) && (_player.Velocity.Y == 0))
             {
-                direction.Y = -200;
-                _jumpTimer = 1;
+                _player.Jump();
             }
-
-            if (_jumpTimer >= 0)
-                _jumpTimer -= deltaTime;
             
             _player.Update(deltaTime);
             _player.SetDirection(direction);
-            
+
+            if ((_player.Position.Y + _player.Size.Y) >= _ground)
+            {
+                _player.Velocity.Y = 0;
+                _player.Position.Y = _ground - _player.Size.Y;
+            }
 
             base.Update(gameTime);
         }
