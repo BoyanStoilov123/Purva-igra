@@ -10,12 +10,13 @@ namespace Purva_igra
         private SpriteBatch _spriteBatch;
         private Texture2D _squareTexture;
         private float _ground;
-        private float _jumpTimer;
         private Vector2 _screenSize;
 
         private Texture2D _backround;
 
         private Player _player;
+
+        private Rectangle[] _platforms;
 
         public Game1()
         {
@@ -26,11 +27,15 @@ namespace Purva_igra
             _screenSize = new Vector2(1280, 720);
             _graphics.PreferredBackBufferWidth = (int)_screenSize.X;
             _graphics.PreferredBackBufferHeight = (int)_screenSize.Y;
+
+            _platforms = new Rectangle[3];
+            _platforms[0] = new Rectangle(220, 590, 150, 30);
+            _platforms[1] = new Rectangle(420, 520, 100, 30);
+            _platforms[2] = new Rectangle(620, 470, 70, 30);
         }
 
         protected override void Initialize()
         {
-            _jumpTimer = 0;
             _ground = 690;
 
             _player = new Player(
@@ -99,6 +104,11 @@ namespace Purva_igra
             _spriteBatch.Draw(
                _backround, Vector2.Zero, Color.White);
 
+            for (int i = 0; i < _platforms.Length; ++i)
+            {
+                _spriteBatch.Draw(_squareTexture, _platforms[i], Color.RosyBrown);
+            }
+            
             _spriteBatch.Draw(
                 _squareTexture,
                 new Rectangle(
