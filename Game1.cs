@@ -86,6 +86,8 @@ namespace Purva_igra
             _player.Update(deltaTime);
             _player.SetDirection(direction);
 
+            ResolveCollisions();
+            
             if ((_player.Position.Y + _player.Size.Y) >= _ground)
             {
                 _player.Velocity.Y = 0;
@@ -122,5 +124,24 @@ namespace Purva_igra
 
             base.Draw(gameTime);
         }
+
+        private void ResolveCollisions()
+        {
+            bool isCollidingLeft = (_player.Position.X + _player.Size.X) > _platforms[0].Left;
+            bool isCollidingTop = (_player.Position.Y + _player.Size.Y) > _platforms[0].Top;
+            bool isCollidingRight = _player.Position.X < _platforms[0].Right; 
+            bool isCollidingBottom = _player.Position.Y < _platforms[0].Bottom;
+
+
+            if (isCollidingLeft && isCollidingTop)
+            {
+                _player.Position.X = _platforms[0].Left - _player.Size.X;
+                _player.Position.Y = _platforms[0].Top - _player.Size.Y;
+                _player.Velocity.Y = 0;
+            }
+
+
+        }
+
     }
 }
