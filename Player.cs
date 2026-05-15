@@ -6,7 +6,7 @@ using System.Diagnostics;
 public class Player
 {
     private const float _gravity = 9.8f;
-    private const float _jumpForce = 400f;
+    private const float _jumpForce = 350f;
     
     
     private float _movementSpeed;

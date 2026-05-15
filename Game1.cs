@@ -127,21 +127,37 @@ namespace Purva_igra
 
         private void ResolveCollisions()
         {
-            bool isCollidingLeft = (_player.Position.X + _player.Size.X) > _platforms[0].Left;
-            bool isCollidingTop = (_player.Position.Y + _player.Size.Y) > _platforms[0].Top;
-            bool isCollidingRight = _player.Position.X < _platforms[0].Right; 
-            bool isCollidingBottom = _player.Position.Y < _platforms[0].Bottom;
-
-
-            if (isCollidingLeft && isCollidingTop)
+            for (int i = 0; i < _platforms.Length; ++i)
             {
-                _player.Position.X = _platforms[0].Left - _player.Size.X;
-                _player.Position.Y = _platforms[0].Top - _player.Size.Y;
-                _player.Velocity.Y = 0;
+
+                bool isCollidingLeft = (_player.Position.X + _player.Size.X) > _platforms[i].Left;
+                bool isCollidingTop = (_player.Position.Y + _player.Size.Y) > _platforms[i].Top;
+                bool isCollidingRight = _player.Position.X < _platforms[i].Right;
+                bool isCollidingBottom = _player.Position.Y < _platforms[i].Bottom;
+                bool isColliding = isCollidingLeft && isCollidingTop && isCollidingRight && isCollidingBottom;
+
+
+                if (isColliding)
+                {
+                    if ((isCollidingLeft || isCollidingRight) && (!isCollidingTop && !isCollidingBottom))
+                    {
+                        _player.Velocity.X *= -1;
+                    }
+
+                    if (isCollidingBottom)
+                    {
+                        _player.Velocity.Y *= -1;
+                    }
+
+                    if (isCollidingTop)
+                    {
+                        _player.Velocity.Y = 0;
+                        _player.Position.Y = _platforms[i].Top - _player.Size.Y;
+                    }
+                }
+
+
             }
-
-
         }
-
     }
 }
