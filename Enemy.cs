@@ -2,8 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-
-public class Player
+public class Enemy
 {
     private const float _gravity = 9.8f;
     private const float _jumpForce = 350f;
@@ -16,7 +15,7 @@ public class Player
 
     public Vector2 Velocity;
 
-    public Player(Vector2 position, Vector2 size)
+    public Enemy(Vector2 position, Vector2 size)
     {
         Position = position;
         Size = size;
@@ -51,7 +50,7 @@ public class Player
                 (int)Position.Y,
                 (int)Size.X,
                 (int)Size.Y),
-            Color.Beige);
+            Color.Red);
     }
 
     public void SetDirection(Vector2 direction)

@@ -15,6 +15,7 @@ namespace Purva_igra
         private Texture2D _backround;
 
         private Player _player;
+        private Enemy _enemy;
 
         private Rectangle[] _platforms;
 
@@ -42,7 +43,13 @@ namespace Purva_igra
                 new Vector2 (50, 335),
                 new Vector2 (40, 65)
             );
-          
+
+            _enemy = new Enemy(
+                new Vector2(700, 200),
+                new Vector2(40, 65)
+            );
+
+
 
             base.Initialize();
         }
@@ -55,8 +62,16 @@ namespace Purva_igra
 
             _squareTexture = new Texture2D(GraphicsDevice, 1, 1);
             _squareTexture.SetData(new[] { Color.Beige });
-        }
 
+            Texture2D playerTexture = new Texture2D(GraphicsDevice, 1, 1);
+            playerTexture.SetData(new[] { Color.Beige });
+            _player.LoadContent(playerTexture);
+
+            Texture2D enemyTexture = new Texture2D(GraphicsDevice, 1, 1);
+            enemyTexture.SetData(new[] { Color.Beige });
+            _enemy.LoadContent(enemyTexture);
+        }
+        
         protected override void Update(GameTime gameTime)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -86,12 +101,20 @@ namespace Purva_igra
             _player.Update(deltaTime);
             _player.SetDirection(direction);
 
+            _enemy.Update(deltaTime);
+
             ResolveCollisions();
             
             if ((_player.Position.Y + _player.Size.Y) >= _ground)
             {
                 _player.Velocity.Y = 0;
                 _player.Position.Y = _ground - _player.Size.Y;
+            }
+
+            if ((_enemy.Position.Y + _enemy.Size.Y) >= _ground)
+            {
+                _enemy.Velocity.Y = 0;
+                _enemy.Position.Y = _ground - _enemy.Size.Y;
             }
 
             base.Update(gameTime);
