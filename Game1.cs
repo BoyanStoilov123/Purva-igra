@@ -133,15 +133,10 @@ namespace Purva_igra
             {
                 _spriteBatch.Draw(_squareTexture, _platforms[i], Color.RosyBrown);
             }
-            
-            _spriteBatch.Draw(
-                _squareTexture,
-                new Rectangle(
-                    (int)_player.Position.X,
-                    (int)_player.Position.Y,
-                    (int)_player.Size.X,
-                    (int)_player.Size.Y),
-                Color.Beige);
+
+            _player.Draw(_spriteBatch);
+
+            _enemy.Draw(_spriteBatch);
 
             _spriteBatch.End();
 
