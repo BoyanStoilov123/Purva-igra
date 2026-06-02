@@ -41,7 +41,7 @@ namespace Purva_igra
 
             _player = new Player(
                 new Vector2 (50, 335),
-                new Vector2 (40, 65)
+                new Vector2 (90, 90)
             );
 
             _enemy = new Enemy(
@@ -63,8 +63,7 @@ namespace Purva_igra
             _squareTexture = new Texture2D(GraphicsDevice, 1, 1);
             _squareTexture.SetData(new[] { Color.Beige });
 
-            Texture2D playerTexture = new Texture2D(GraphicsDevice, 1, 1);
-            playerTexture.SetData(new[] { Color.Beige });
+            Texture2D playerTexture =Content.Load<Texture2D>("images/main-character-sqr");
             _player.LoadContent(playerTexture);
 
             Texture2D enemyTexture = new Texture2D(GraphicsDevice, 1, 1);

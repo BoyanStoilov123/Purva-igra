@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Purva-igra")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+418c5d2e1ce95ddd5c82c07d659fde44ddc5275a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6632b69958a5a7afdcf1ef58a815f55bf9084d6b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Purva-igra")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Purva-igra")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
