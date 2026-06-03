@@ -6,9 +6,11 @@
   <SourceFiles>
     <File>C:/Users/Student/Documents/GitHub/Purva-igra/Content/images/Gemini_Generated_Image_sjomspsjomspsjom.png</File>
     <File>C:/Users/Student/Documents/GitHub/Purva-igra/Content/images/main-character-sqr.png</File>
+    <File>C:/Users/Student/Documents/GitHub/Purva-igra/Content/images/Platform 1.png</File>
   </SourceFiles>
   <DestFiles>
     <File>images/Backround.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

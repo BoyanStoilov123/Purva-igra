@@ -13,6 +13,7 @@ namespace Purva_igra
         private Vector2 _screenSize;
 
         private Texture2D _backround;
+        private Texture2D _platformTexture;
 
         private Player _player;
         private Enemy _enemy;
@@ -30,9 +31,9 @@ namespace Purva_igra
             _graphics.PreferredBackBufferHeight = (int)_screenSize.Y;
 
             _platforms = new Rectangle[3];
-            _platforms[0] = new Rectangle(220, 590, 150, 30);
-            _platforms[1] = new Rectangle(420, 520, 100, 30);
-            _platforms[2] = new Rectangle(620, 470, 70, 30);
+            _platforms[0] = new Rectangle(220, 590, 150, 70);
+            _platforms[1] = new Rectangle(420, 520, 100, 70);
+            _platforms[2] = new Rectangle(620, 470, 80, 70);
         }
 
         protected override void Initialize()
@@ -59,9 +60,7 @@ namespace Purva_igra
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             _backround = Content.Load<Texture2D>("images/backround");
-
-            _squareTexture = new Texture2D(GraphicsDevice, 1, 1);
-            _squareTexture.SetData(new[] { Color.Beige });
+            _platformTexture = Content.Load<Texture2D>("images/Platform 1");
 
             Texture2D playerTexture =Content.Load<Texture2D>("images/main-character-sqr");
             _player.LoadContent(playerTexture);
@@ -130,7 +129,7 @@ namespace Purva_igra
 
             for (int i = 0; i < _platforms.Length; ++i)
             {
-                _spriteBatch.Draw(_squareTexture, _platforms[i], Color.RosyBrown);
+                _spriteBatch.Draw(_platformTexture, _platforms[i], Color.RosyBrown);
             }
 
             _player.Draw(_spriteBatch);

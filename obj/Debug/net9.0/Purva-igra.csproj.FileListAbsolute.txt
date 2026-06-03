@@ -103,3 +103,4 @@ C:\Users\Student\Desktop\Purva-igra\obj\Debug\net9.0\Purva-igra.genruntimeconfig
 C:\Users\Student\Desktop\Purva-igra\obj\Debug\net9.0\ref\Purva-igra.dll
 C:\Users\Student\Documents\GitHub\Purva-igra\bin\Debug\net9.0\Content\images\Backround.xnb
 C:\Users\Student\Documents\GitHub\Purva-igra\bin\Debug\net9.0\Content\images\main-character-sqr.xnb
+C:\Users\Student\Documents\GitHub\Purva-igra\bin\Debug\net9.0\Content\images\Platform 1.xnb
