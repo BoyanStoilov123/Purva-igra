@@ -31,9 +31,9 @@ namespace Purva_igra
             _graphics.PreferredBackBufferHeight = (int)_screenSize.Y;
 
             _platforms = new Rectangle[3];
-            _platforms[0] = new Rectangle(220, 590, 150, 70);
-            _platforms[1] = new Rectangle(420, 520, 100, 70);
-            _platforms[2] = new Rectangle(620, 470, 80, 70);
+            _platforms[0] = new Rectangle(220, 590, 180, 90);
+            _platforms[1] = new Rectangle(490, 490, 180, 90);
+            _platforms[2] = new Rectangle(710, 400, 180, 90);
         }
 
         protected override void Initialize()
@@ -41,8 +41,8 @@ namespace Purva_igra
             _ground = 690;
 
             _player = new Player(
-                new Vector2 (50, 335),
-                new Vector2 (90, 90)
+                new Vector2(50, 335),
+                new Vector2(90, 90)
             );
 
             _enemy = new Enemy(
@@ -62,14 +62,14 @@ namespace Purva_igra
             _backround = Content.Load<Texture2D>("images/backround");
             _platformTexture = Content.Load<Texture2D>("images/Platform 1");
 
-            Texture2D playerTexture =Content.Load<Texture2D>("images/main-character-sqr");
+            Texture2D playerTexture = Content.Load<Texture2D>("images/main-character-sqr");
             _player.LoadContent(playerTexture);
 
             Texture2D enemyTexture = new Texture2D(GraphicsDevice, 1, 1);
             enemyTexture.SetData(new[] { Color.Beige });
             _enemy.LoadContent(enemyTexture);
         }
-        
+
         protected override void Update(GameTime gameTime)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -95,14 +95,14 @@ namespace Purva_igra
             {
                 _player.Jump();
             }
-            
+
             _player.Update(deltaTime);
             _player.SetDirection(direction);
 
             _enemy.Update(deltaTime);
 
             ResolveCollisions();
-            
+
             if ((_player.Position.Y + _player.Size.Y) >= _ground)
             {
                 _player.Velocity.Y = 0;
@@ -143,37 +143,49 @@ namespace Purva_igra
 
         private void ResolveCollisions()
         {
-            for (int i = 0; i < _platforms.Length; ++i)
+            for (int i = 0; i < _platforms.Length; i++)
             {
+                Vector2 collisionData = GetCollisionData(_player.Collider, _platforms[i]);
+                if (collisionData == Vector2.Zero)
+                    continue;
 
-                bool isCollidingLeft = (_player.Position.X + _player.Size.X) > _platforms[i].Left;
-                bool isCollidingTop = (_player.Position.Y + _player.Size.Y) > _platforms[i].Top;
-                bool isCollidingRight = _player.Position.X < _platforms[i].Right;
-                bool isCollidingBottom = _player.Position.Y < _platforms[i].Bottom;
-                bool isColliding = isCollidingLeft && isCollidingTop && isCollidingRight && isCollidingBottom;
-
-
-                if (isColliding)
+                _player.Position += collisionData;
+                if (collisionData.X != 0)
                 {
-                    if ((isCollidingLeft || isCollidingRight) && (!isCollidingTop && !isCollidingBottom))
-                    {
-                        _player.Velocity.X *= -1;
-                    }
-
-                    if (isCollidingBottom)
-                    {
-                        _player.Velocity.Y *= -1;
-                    }
-
-                    if (isCollidingTop)
+                    _player.Velocity.X = 0;
+                }
+                else
+                {
+                    if (collisionData.Y < 0)
                     {
                         _player.Velocity.Y = 0;
-                        _player.Position.Y = _platforms[i].Top - _player.Size.Y;
+                    }
+                    else
+                    {
+                        _player.Velocity.Y = 0.1f;
                     }
                 }
-
-
             }
+        }
+
+        private Vector2 GetCollisionData(Rectangle a, Rectangle b)
+        {
+            Vector2 result = Vector2.Zero;
+            if (a.Intersects(b))
+            {
+                Rectangle overlap = Rectangle.Intersect(a, b);
+                if (overlap.Width < overlap.Height)
+                {
+                    int direction = a.Center.X < b.Center.X ? -overlap.Width : overlap.Height;
+                    result.X = direction;
+                }
+                else
+                {   
+                    int direction = a.Center.Y < b.Center.Y ? -overlap.Height : overlap.Width;
+                    result.Y = direction;
+                }
+            }
+            return result;
         }
     }
 }
